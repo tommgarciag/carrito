@@ -9,7 +9,10 @@ const listaCursos = document.querySelector('#lista-carrito tbody');
 eventListeners()
 
 function eventListeners() {
+    // Agregar al carrito
     cursos.addEventListener('click', comprarCurso);
+    // Eliminar del carrito
+    carrito.addEventListener('click', eliminarCurso);
 }
 
 // Functions
@@ -22,6 +25,14 @@ function comprarCurso(e) {
         // Leer curso seleccionado para enviar sus datos       
         leerDatosCurso(curso);
     };
+}
+
+function eliminarCurso(e) {
+    e.preventDefault();
+    if (e.target.classList.contains('borrar-curso')) {
+        e.target.parentElement.parentElement.remove();
+    }; 
+    
 }
 
 function leerDatosCurso(curso) {
