@@ -67,4 +67,23 @@ function insertarAlCarrito(curso) {
         </td>
     `;
     listaCursos.appendChild(row);
+    guardarLocalStorage(curso);
+}
+
+function guardarLocalStorage(curso) {
+    let cursos;
+    cursos = obtenerCursosLocalStorage();
+    cursos.push(curso);
+    localStorage.setItem('cursos', JSON.stringify(cursos));
+}
+
+function obtenerCursosLocalStorage() {
+    let cursosLS;
+    // Comprobar si hay cursos en Local Storage
+    if (localStorage.getItem('cursos') === null) {
+        cursosLS = [];
+    } else {
+        cursosLS = JSON.parse(localStorage.getItem('cursos'));
+    }
+    return cursosLS;
 }
